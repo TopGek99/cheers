@@ -1,0 +1,13 @@
+#navbar {
+  width: 100%;
+}
+#brand {
+  color: white;
+}
+#basic-navbar-nav {
+  justify-content: space-between;
+  align-items: center;
+}
+#nav {
+  color: white;
+}
