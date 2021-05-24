@@ -1,0 +1,12 @@
+#login-sign-up {
+	margin-top: 5%;
+	width: 40%;
+	padding: 2%;
+}
+.card-body {
+	display: flex;
+	justify-content: space-between;
+}
+.btn {
+	margin-top: 5%;
+}
