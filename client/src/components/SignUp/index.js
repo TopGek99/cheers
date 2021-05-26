@@ -2,21 +2,33 @@ import { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
 import API from "../../utils/API";
 
-function Login() {
+function SignUp() {
+  const usernameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    API.getUser({
+    API.saveUser({
+      username: usernameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
     });
   };
+
   return (
-    <div id="login">
-      <h3>Login</h3>
+    <div id="sign-up">
+      <h3>Sign Up</h3>
       <Form onSubmit={handleSubmit}>
+        <Form.Group>
+          <Form.Label>Username</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter new username"
+            ref={usernameRef}
+          />
+        </Form.Group>
+
         <Form.Group>
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" ref={emailRef} />
@@ -34,11 +46,11 @@ function Login() {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Login
+          Sign Up
         </Button>
       </Form>
     </div>
   );
 }
 
-export default Login;
+export default SignUp;
