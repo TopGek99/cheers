@@ -1,22 +1,38 @@
-import "./App.css";
-import { Container } from "react-bootstrap";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoginSignUp from "./components/LoginSignUp";
-import Title from "./components/Title";
+import './App.css';
+import { useState } from 'react';
+import API from './utils/API';
+import { Container } from 'react-bootstrap';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect,
+} from 'react-router-dom';
+import LoginSignUp from './components/LoginSignUp';
+import User from './pages/User';
 
 function App() {
-  return (
-    <Router>
-      <Container id="container" fluid>
-        <Switch>
-          <Route exact path={["/", "/login"]}>
-            <Title />
-            <LoginSignUp />
-          </Route>
-        </Switch>
-      </Container>
-    </Router>
-  );
+	const [loggedIn, setLoggedIn] = useState([]);
+	// const [userId, setUserId] = useState([]);
+
+	API.getSession().then((session) => {
+		setLoggedIn(session.loggedIn);
+		// setUserId(session.userId);
+	});
+	return (
+		<Router>
+			<Container id='container' fluid>
+				<Switch>
+					<Route exact path={['/', '/login']}>
+						{loggedIn ? <Redirect to='/user' /> : <LoginSignUp />}
+					</Route>
+					<Route exact path={['/user']}>
+						<User />
+					</Route>
+				</Switch>
+			</Container>
+		</Router>
+	);
 }
 
 export default App;

@@ -1,32 +1,26 @@
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import "./style.css";
+import { Navbar, Nav } from 'react-bootstrap';
+import './style.css';
 
 function NavContainer() {
-  return (
-    <Navbar id="navbar" bg="dark" expand="lg">
-      <Navbar.Brand id="brand" href="#home">
-        Beer Clone
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav id="nav" className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Link</Nav.Link>
-          <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
-            </NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
+	return (
+		<Navbar id='navbar' bg='dark' expand='lg'>
+			<Navbar.Brand id='brand'>Beer Buddy Clone</Navbar.Brand>
+			<Navbar.Toggle aria-controls='basic-navbar-nav' />
+			<Navbar.Collapse id='basic-navbar-nav'>
+				<Nav id='nav' className='mr-auto'>
+					<Nav.Link id='beer-link' href='/user'>
+						Profile
+					</Nav.Link>
+					<Nav.Link id='beer-link-1' href='/'>
+						Feed
+					</Nav.Link>
+					<Nav.Link id='beer-link-2' href='/'>
+						Log Out
+					</Nav.Link>
+				</Nav>
+			</Navbar.Collapse>
+		</Navbar>
+	);
 }
 
 export default NavContainer;

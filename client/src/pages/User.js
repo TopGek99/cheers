@@ -1,8 +1,8 @@
-import NavContainer from "../components/NavContainer";
-import API from "../utils/API";
+import NavContainer from '../components/NavContainer';
+// import API from '../utils/API';
 
 function User() {
-  return;
+	return <NavContainer />;
 }
 
 export default User;
