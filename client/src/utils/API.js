@@ -8,9 +8,9 @@ const API = {
   // Gets the User with the given id
   getUser: function (userData) {
     return axios
-      .post("/api/users/login", userData)
+      .post("/api/users/login/", userData)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -21,9 +21,10 @@ const API = {
     return axios.delete("/api/users/" + id);
   },
   // Saves a User to the database
-  saveUser: function (userData) {
+  saveUser: function (user) {
+    console.log(user);
     return axios
-      .post("/api/users/", userData)
+      .post("/api/users/", user)
       .then((response) => {
         console.log(response);
       })
