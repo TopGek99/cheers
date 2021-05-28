@@ -20,7 +20,7 @@ function SignUp() {
     <div id="sign-up">
       <h3>Sign Up</h3>
       <Form onSubmit={handleSubmit}>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
@@ -29,7 +29,7 @@ function SignUp() {
           />
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" ref={emailRef} />
           <Form.Text className="text-muted">
@@ -37,7 +37,7 @@ function SignUp() {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
