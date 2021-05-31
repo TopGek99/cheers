@@ -1,12 +1,10 @@
 import axios from "axios";
 
 const API = {
-  // Gets all Users
-  getSession: function () {
+  getAuth: function () {
     return axios.get("api/users/session");
   },
-  // Gets the User with the given id
-  getUser: function (userData) {
+  logIn: function (userData) {
     return axios
       .post("api/users/login/", userData)
       .then((response) => {
@@ -15,6 +13,15 @@ const API = {
       .catch((error) => {
         console.log(error);
       });
+  },
+  getUserById: function (userId) {
+    return axios.get("api/users/" + userId);
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   },
   logOut: function () {
     return axios
@@ -36,6 +43,14 @@ const API = {
       .catch((error) => {
         console.log(error);
       });
+  },
+  saveDrink: function (drink) {
+    return axios.post("api/users/drinks", drink).then((response) => {
+      console.log(response);
+    });
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   },
 };
 

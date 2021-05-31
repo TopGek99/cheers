@@ -3,9 +3,10 @@ const bcrypt = require("bcrypt");
 
 // Defining methods for the usersController
 module.exports = {
-  session: function (req, res) {
+  getAuth: function (req, res) {
     res.json({
       userId: req.session.userId,
+      loggedIn: req.session.loggedIn,
     });
   },
   logOut: function (req, res) {
@@ -17,7 +18,7 @@ module.exports = {
       res.status(404).end();
     }
   },
-  find: function (req, res) {
+  logIn: function (req, res) {
     // console.log(req.session);
     db.User.findOne({ email: req.body.email })
       .then((dbModel) => {
@@ -28,7 +29,14 @@ module.exports = {
           res.json(dbModel);
         });
       })
-      .catch((err) => res.status(422).json(err));
+      .catch((err) => res.status(404).json(err));
+  },
+  findById: function (req, res) {
+    db.User.findById({ _id: req.params.id })
+      .then((dbModel) => {
+        res.status(200).json(dbModel);
+      })
+      .catch((err) => res.status(404).json(err));
   },
   create: function (req, res) {
     db.User.create(req.body)
@@ -37,6 +45,17 @@ module.exports = {
         req.session.userId = dbModel._id;
         res.json(dbModel);
       })
-      .catch((err) => res.status(422).json(err));
+      .catch((err) => res.status(404).json(err));
+  },
+  createDrink: function (req, res) {
+    db.User.findById(req.session.userId).then((dbModel) => {
+      dbModel.drinks.unshift(req.body);
+      dbModel
+        .save()
+        .then(() => {
+          res.json(dbModel);
+        })
+        .catch((err) => res.status(404).json(err));
+    });
   },
 };

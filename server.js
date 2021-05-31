@@ -31,6 +31,7 @@ var store = new MongoDBStore({
 app.use(
   session({
     secret: "4b22bu32664fdd",
+    cookie: {},
     store: store,
     resave: true,
     saveUninitialized: true,

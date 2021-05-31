@@ -7,21 +7,16 @@ function NavContainer() {
   };
 
   return (
-    <Navbar id="navbar" bg="dark" expand="lg">
-      <Navbar.Brand id="brand">Cheers!</Navbar.Brand>
+    <Navbar variant="dark" bg="dark" expand="lg">
+      <Navbar.Brand className="px-3">Cheers!</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav id="nav" className="mr-auto justify-content-between">
+        <Nav className="w-100 mr-auto justify-content-between">
           <div className="d-flex">
-            <Nav.Link id="beer-link" href="/user">
-              Profile
-            </Nav.Link>
-            <Nav.Link id="beer-link-1" href="/">
-              Feed
-            </Nav.Link>
+            <Nav.Link href="/user">Profile</Nav.Link>
           </div>
           <div>
-            <Nav.Link onClick={logOut} id="beer-link-2" href="/">
+            <Nav.Link onClick={logOut} href="/">
               Log Out
             </Nav.Link>
           </div>

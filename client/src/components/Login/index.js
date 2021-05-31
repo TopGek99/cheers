@@ -1,18 +1,22 @@
-import { useRef, useContext } from "react";
+import { useRef, useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
 
 function Login() {
-  //   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    API.getUser({
+    API.logIn({
       email: emailRef.current.value,
       password: passwordRef.current.value,
-    }).then((userId) => {});
+    }).then(() => {
+      setLoggedIn(true);
+    });
+    return <Redirect to="/user" />;
   };
   return (
     <div>
@@ -34,9 +38,12 @@ function Login() {
             ref={passwordRef}
           />
         </Form.Group>
+
         <Button variant="primary" type="submit">
           Login
         </Button>
+
+        {loggedIn ? <Redirect to="/user" /> : ""}
       </Form>
     </div>
   );

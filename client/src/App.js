@@ -8,13 +8,20 @@ import {
   Redirect,
 } from "react-router-dom";
 import LoginSignUp from "./components/LoginSignUp";
-import User from "./pages/User";
+import User from "./components/User";
 import NavContainer from "./components/NavContainer";
-import UserContext from "./utils/Context";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(null);
+  //   const [userId, setUserId] = useState(null);
+
+  //   useEffect(() => {
+  API.getAuth().then((session) => {
+    if (session.userId) {
+      setLoggedIn(true);
+    }
+  });
+  //   }, []);
 
   const renderNav = () => {
     if (loggedIn) {
@@ -22,22 +29,19 @@ function App() {
     }
   };
 
-  API.getSession().then((session) => {
-    setLoggedIn(session.loggedIn);
-  });
   return (
     <Router>
-      <UserContext.Provider value={userId}>
-        {renderNav()}
-        <Switch>
-          <Route exact path={["/"]}>
-            {loggedIn ? <Redirect to="/user" /> : <LoginSignUp />}
-          </Route>
-          <Route exact path={["/user"]}>
-            <User loggedIn={loggedIn} />
-          </Route>
-        </Switch>
-      </UserContext.Provider>
+      {renderNav()}
+      <Switch>
+        <Route exact path={["/"]}>
+          {loggedIn ? <Redirect to="/user" /> : <LoginSignUp />}
+        </Route>
+        <Route exact path={["/user"]}>
+          <NavContainer />
+          <User />
+          {/* {loggedIn ? <User /> : <Redirect to="/" />} */}
+        </Route>
+      </Switch>
     </Router>
   );
 }

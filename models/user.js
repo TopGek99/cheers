@@ -14,8 +14,9 @@ const userSchema = new Schema({
   },
   drinks: [
     {
-      type: Schema.ObjectId,
-      ref: "Drink",
+      beverage: { type: String, required: true, unique: true },
+      date: { type: Date, default: Date.now, required: true },
+      location: { type: String, required: true },
     },
   ],
 });
