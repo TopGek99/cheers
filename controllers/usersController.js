@@ -19,7 +19,7 @@ module.exports = {
     }
   },
   logIn: function (req, res) {
-    // console.log(req.session);
+    console.log(req.session);
     db.User.findOne({ email: req.body.email })
       .then((dbModel) => {
         bcrypt.compare(req.body.password, dbModel.password, (err, result) => {
