@@ -7,7 +7,7 @@ import API from "../../utils/API";
 
 function User() {
   const [buttonClicked, setButtonClicked] = useState(false);
-  //   const [userId, setUserId] = useState(null);
+  const [drinks, setDrinks] = useState([]);
   const [user, setUser] = useState(null);
 
   const flipButton = () => {
@@ -19,23 +19,24 @@ function User() {
   };
   const renderDrinkForm = () => {
     if (buttonClicked) {
-      return <DrinkForm flipButton={flipButton} />;
+      return (
+        <DrinkForm
+          drinks={drinks}
+          setDrinks={setDrinks}
+          flipButton={flipButton}
+        />
+      );
     }
+  };
+  const renderDrinks = () => {
+    return drinks.map((drink) => <Drink drink={drink} />);
   };
 
-  const renderDrinks = () => {
-    if (user) {
-      let drinks = [];
-      for (let i = 0; i < user.drinks.length; i++) {
-        drinks.push(<Drink drink={user.drinks[i]} />);
-      }
-      return drinks;
-    }
-  };
   useEffect(() => {
     API.getAuth().then((session) => {
       API.getUserById(session.data.userId).then((user) => {
         setUser(user.data);
+        setDrinks(user.data.drinks);
       });
     });
   }, []);
@@ -52,7 +53,7 @@ function User() {
             + New Drink
           </Button>
           {renderDrinkForm()}
-          {renderDrinks()}
+          {drinks ? renderDrinks() : ""}
         </Col>
       </Row>
     </Container>

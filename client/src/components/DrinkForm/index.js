@@ -1,19 +1,22 @@
 import { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
-import { Redirect } from "react-router";
+// import { Redirect } from "react-router";
 import API from "../../utils/API";
+// import Drink from "../Drink";
 
-function DrinkForm({ flipButton }) {
+function DrinkForm({ drinks, setDrinks, flipButton }) {
   const bevRef = useRef(null);
   const locationRef = useRef(null);
 
-  const submitDrink = () => {
-    // event.preventDefault();
-    API.saveDrink({
+  const submitDrink = (event) => {
+    event.preventDefault();
+    let drink = {
       beverage: bevRef.current.value,
       location: locationRef.current.value,
-    }).then(() => {
-      return <Redirect to="/user" />;
+    };
+    API.saveDrink(drink).then(() => {
+      setDrinks([drink, ...drinks]);
+      flipButton();
     });
   };
   return (
