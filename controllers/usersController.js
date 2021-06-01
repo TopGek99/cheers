@@ -19,16 +19,16 @@ module.exports = {
     }
   },
   logIn: function (req, res) {
-    console.log(req.session);
-    db.User.findOne({ email: req.body.email }).then((dbModel) => {
-      bcrypt.compare(req.body.password, dbModel.password, (err, result) => {
-        req.session.loggedIn = true;
-        req.session.userId = dbModel._id;
-        console.log(req.session);
-        res.json(dbModel);
-      });
-    });
-    //   .catch((err) => res.status(404).json(err));
+    db.User.findOne({ email: req.body.email })
+      .then((dbModel) => {
+        bcrypt.compare(req.body.password, dbModel.password, (err, result) => {
+          req.session.loggedIn = true;
+          req.session.userId = dbModel._id;
+
+          res.json(dbModel);
+        });
+      })
+      .catch((err) => res.status(404).json(err));
   },
   findById: function (req, res) {
     db.User.findById({ _id: req.params.id })

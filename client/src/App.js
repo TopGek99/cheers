@@ -35,7 +35,6 @@ function App() {
         </Route>
         <Route exact path="/user">
           <NavContainer setLoggedIn={setLoggedIn} />
-          {/* <User /> */}
           {loggedIn ? <User /> : <Redirect to="/" />}
         </Route>
       </Switch>

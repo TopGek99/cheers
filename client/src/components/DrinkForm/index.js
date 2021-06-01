@@ -1,8 +1,6 @@
 import { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
-// import { Redirect } from "react-router";
 import API from "../../utils/API";
-// import Drink from "../Drink";
 
 function DrinkForm({ drinks, setDrinks, flipButton }) {
   const bevRef = useRef(null);
@@ -21,7 +19,6 @@ function DrinkForm({ drinks, setDrinks, flipButton }) {
   };
   return (
     <Form onSubmit={submitDrink}>
-      {/* <Form.File className="my-3" custom /> */}
       <Form.Control as="select" className="my-3" ref={bevRef}>
         <option default value="Select">
           Select a Drink
