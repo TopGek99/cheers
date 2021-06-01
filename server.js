@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/beerdb", {
 });
 
 var store = new MongoDBStore({
-  uri: "mongodb://localhost/beerdb",
+  uri: process.env.MONGODB_URI || "mongodb://localhost/beerdb",
   database: "beerdb",
   collection: "mySessions",
 });
