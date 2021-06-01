@@ -1,6 +1,7 @@
 const express = require("express");
 const session = require("express-session");
 const mongoose = require("mongoose");
+const mb = require("mongoose-bcrypt");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const routes = require("./routes");
 const path = require("path");
