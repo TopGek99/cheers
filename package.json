@@ -15,12 +15,9 @@
     },
     "author": "",
     "license": "ISC",
-    "devDependencies": {
-        "concurrently": "^4.1.0",
-        "nodemon": "^1.18.7"
-    },
     "dependencies": {
         "bcrypt": "^5.0.1",
+        "concurrently": "^4.1.0",
         "chokidar": "^3.5.1",
         "connect-mongodb-session": "^2.4.1",
         "express": "^4.16.3",
@@ -29,6 +26,7 @@
         "js-cookie": "^2.2.1",
         "mongoose": "^5.12.10",
         "mongoose-bcrypt": "^1.9.0",
+        "nodemon": "^1.18.7",
         "validator": "^13.6.0"
     }
 }
