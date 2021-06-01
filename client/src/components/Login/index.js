@@ -1,10 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
 
-function Login() {
-  const [loggedIn, setLoggedIn] = useState(false);
+function Login({ loggedIn, setLoggedIn }) {
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -16,7 +15,6 @@ function Login() {
     }).then(() => {
       setLoggedIn(true);
     });
-    return <Redirect to="/user" />;
   };
   return (
     <div>

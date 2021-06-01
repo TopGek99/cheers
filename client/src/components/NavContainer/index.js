@@ -1,9 +1,10 @@
 import { Navbar, Nav } from "react-bootstrap";
 import API from "../../utils/API";
 
-function NavContainer() {
+function NavContainer({ setLoggedIn }) {
   const logOut = () => {
     API.logOut();
+    setLoggedIn("");
   };
 
   return (
@@ -16,9 +17,7 @@ function NavContainer() {
             <Nav.Link href="/user">Profile</Nav.Link>
           </div>
           <div>
-            <Nav.Link onClick={logOut} href="/">
-              Log Out
-            </Nav.Link>
+            <Nav.Link onClick={logOut}>Log Out</Nav.Link>
           </div>
         </Nav>
       </Navbar.Collapse>

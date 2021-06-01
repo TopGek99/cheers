@@ -6,7 +6,7 @@ const API = {
   },
   logIn: function (userData) {
     return axios
-      .post("api/users/login/", userData)
+      .post("api/users/login", userData)
       .then((response) => {
         console.log(response);
       })
@@ -16,12 +16,6 @@ const API = {
   },
   getUserById: function (userId) {
     return axios.get("api/users/" + userId);
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   },
   logOut: function () {
     return axios
@@ -35,14 +29,12 @@ const API = {
   },
   saveUser: function (user) {
     console.log(user);
-    return axios
-      .post("api/users/", user)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    return axios.post("api/users/", user).then((response) => {
+      console.log(response);
+    });
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   },
   saveDrink: function (drink) {
     return axios.post("api/users/drinks", drink).then((response) => {

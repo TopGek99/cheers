@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
 import API from "../../utils/API";
 
-function SignUp() {
+function SignUp({ loggedIn, setLoggedIn }) {
   const usernameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -13,6 +13,8 @@ function SignUp() {
       username: usernameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
+    }).then(() => {
+      setLoggedIn(true);
     });
   };
 

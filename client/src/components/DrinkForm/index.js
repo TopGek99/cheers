@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Form, Button } from "react-bootstrap";
+import { Redirect } from "react-router";
 import API from "../../utils/API";
 
 function DrinkForm({ flipButton }) {
@@ -11,11 +12,13 @@ function DrinkForm({ flipButton }) {
     API.saveDrink({
       beverage: bevRef.current.value,
       location: locationRef.current.value,
+    }).then(() => {
+      return <Redirect to="/user" />;
     });
   };
   return (
     <Form onSubmit={submitDrink}>
-      <Form.File className="my-3" custom />
+      {/* <Form.File className="my-3" custom /> */}
       <Form.Control as="select" className="my-3" ref={bevRef}>
         <option default value="Select">
           Select a Drink

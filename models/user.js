@@ -14,7 +14,7 @@ const userSchema = new Schema({
   },
   drinks: [
     {
-      beverage: { type: String, required: true, unique: true },
+      beverage: { type: String, required: true },
       date: { type: Date, default: Date.now, required: true },
       location: { type: String, required: true },
     },

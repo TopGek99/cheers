@@ -3,7 +3,7 @@ import Title from "../Title";
 import Login from "../Login";
 import SignUp from "../SignUp";
 
-function LoginSignUp() {
+function LoginSignUp({ loggedIn, setLoggedIn }) {
   return (
     <Container
       className="d-flex flex-column align-items-center justify-content-center"
@@ -18,10 +18,10 @@ function LoginSignUp() {
         <Col className="col-6 border rounded px-5 py-3">
           <Row>
             <Col className="col-6">
-              <Login className="" />
+              <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             </Col>
             <Col className="col-6">
-              <SignUp className="" />
+              <SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             </Col>
           </Row>
         </Col>
